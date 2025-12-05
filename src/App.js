@@ -6,25 +6,25 @@ import { Container, Content, Row } from "./styles";
 import { useState } from 'react';
 
 const App = () => {
-  const [currentNumber, setCurrentNumber] = useState(0);
+  const [currentNumber, setCurrentNumber] = useState('');
   const [firstNumber, setFirstNumber] = useState('');
   const [operation, setOperation] = useState('');
 
   const handleOnClear = () => {
-    setCurrentNumber(0);
-    setFirstNumber(0);
+    setCurrentNumber('');
+    setFirstNumber('');
     setOperation('');
   };
 
   const handleAddNumber = (num) => {
-      setCurrentNumber(prev => `${prev === 0 ? '' : prev}${num}`);
+      setCurrentNumber(prev => `${prev}${num}`);
   }
 
   const handleSumNumbers = () => {
 
     if(firstNumber === '') {
       setFirstNumber(String(currentNumber));
-      setCurrentNumber(0);
+      setCurrentNumber('');
       setOperation('+');
     }else {
       const sum = Number(firstNumber) + Number(currentNumber);
@@ -38,7 +38,7 @@ const App = () => {
 
     if(firstNumber === '') {
       setFirstNumber(String(currentNumber));
-      setCurrentNumber(0);
+      setCurrentNumber('');
       setOperation('-');
     }else {
       const sum = Number(firstNumber) - Number(currentNumber);
@@ -52,7 +52,7 @@ const App = () => {
 
     if(firstNumber === '') {
       setFirstNumber(String(currentNumber));
-      setCurrentNumber(0);
+      setCurrentNumber('');
       setOperation('÷');
     }else {
       const sum = Number(firstNumber) / Number(currentNumber);
@@ -66,7 +66,7 @@ const App = () => {
 
     if(firstNumber === '') {
       setFirstNumber(String(currentNumber));
-      setCurrentNumber(0);
+      setCurrentNumber('');
       setOperation('×');
     }else {
       const sum = Number(firstNumber) * Number(currentNumber);
@@ -78,7 +78,7 @@ const App = () => {
 
   const handleEquals = () => {
 
-    if(firstNumber !== '' && operation !== '' && currentNumber !== 0) {
+    if(firstNumber !== '' && operation !== '' && currentNumber !== '') {
       switch(operation) {
         case '+':
           handleSumNumbers();
